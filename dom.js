@@ -58,3 +58,52 @@ for(var items of odd){
     items.style.color='black'
 
 }
+
+//traversing the dom 
+
+
+let itemList=document.querySelector('#items')
+console.log(itemList.parentNode)
+itemList.parentElement.style.backgroundColor='#f4f4f4'
+console.log(itemList.parentElement.parentElement)
+
+itemList.children[3].style.backgroundColor='green'
+itemList.firstChild.innerText='First'
+itemList.firstElementChild.textContent='First Item Updated'
+itemList.lastElementChild.textContent='Last Item Updated'
+console.log(itemList.lastChild)
+itemList.nextElementSibling.innerHTML='Successful'
+itemList.nextElementSibling.style.padding='10px'
+
+console.log(itemList.previousSibling)
+itemList.previousElementSibling.style.color='black'
+
+//create element
+
+let newDiv= document.createElement('div')
+
+newDiv.className='container2'
+newDiv.id='container2'
+
+newDiv.setAttribute('title', 'newDiv')
+let newDivText=document.createTextNode('Hello World')
+
+newDiv.appendChild(newDivText)
+console.log(newDiv)
+
+let container= document.querySelector('header .container')
+let h1=document.querySelector('header h1')
+
+container.insertBefore(newDiv,h1)
+
+let newTag=document.createElement('li')
+newTag.className='list-group-item'
+
+let liText=document.createTextNode('Hello World')
+newTag.appendChild(liText)
+console.log(newTag)
+
+let ulTag=document.querySelector('#items')
+let li=document.querySelector('.list-group-item')
+
+ulTag.insertBefore(newTag,li)
