@@ -31,6 +31,13 @@ item[2].style.backgroundColor='green'
 for(var items of item){
     items.style.fontWeight='bold'
 }
-// for(var i=0;i<item.length;i++){
-//     item[i].style.fontWeight='bold'
-// }
+
+
+let newtag=document.getElementsByTagName('li')
+newtag[4].style.backgroundColor='green'
+newtag[4].style.fontWeight='bold'
+
+let newItem=document.getElementsByClassName('list-group-newItem')
+newItem[0].style.height='50px'
+newItem[0].style.padding='15px'
+newItem[0].style.listStyle='none'
