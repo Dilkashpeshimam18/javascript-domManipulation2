@@ -41,3 +41,20 @@ let newItem=document.getElementsByClassName('list-group-newItem')
 newItem[0].style.height='50px'
 newItem[0].style.padding='15px'
 newItem[0].style.listStyle='none'
+
+
+let getItems=document.querySelector('.list-group')
+console.log(getItems)
+getItems.children[1].style.backgroundColor='green'
+getItems.children[2].style.display='none'
+
+let getAllItem=document.querySelectorAll('.list-group-item')
+getAllItem[1].style.color='black'
+
+let odd=document.querySelectorAll('.list-group-item:nth-child(odd)')
+console.log(odd)
+for(var items of odd){
+    items.style.backgroundColor='green'
+    items.style.color='black'
+
+}
