@@ -1,109 +1,38 @@
-console.log(document.domain)
-console.log(document.URL)
 
-console.log(document.title)
-console.log(document.all[10])
+//add item to list
+let submitForm=document.getElementById('addForm')
+let ulList=document.getElementById('items')
+submitForm.addEventListener('submit',addForm)
 
-document.all[10].textContent='Item Cart'
+function addForm(e){
+    e.preventDefault()
+    let inputValue=document.getElementById('inputVal').value
+    console.log(inputValue.value)
+    let li=document.createElement('li')
+    li.className='list-group-item'
 
-console.log(document.forms)
+    let liText=document.createTextNode(inputValue)
 
-//Get element by id
-let headerTitle= document.getElementById("header-title")
-let headerBottom=document.getElementById('main-header')
-headerTitle.textContent='Hello'
-headerTitle.innerText='Cart'
+    li.appendChild(liText)
+  let Btn=document.createElement('button')
+  
+ Btn.className='btn btn-danger btn-sm float-right delete'
 
-headerBottom.style.borderBottom='solid 3px #000'
-
-//Get element by classname
-
-let addItem= document.getElementsByClassName('title')
-console.log(addItem)
-addItem[0].style.color='green'
-addItem[0].style.fontWeight='bold'
-addItem[1].style.color='blue'
-
-
-let item=document.getElementsByClassName("list-group-item")
-console.log(item)
-item[2].style.backgroundColor='green'
-for(var items of item){
-    items.style.fontWeight='bold'
-}
-
-
-let newtag=document.getElementsByTagName('li')
-newtag[4].style.backgroundColor='green'
-newtag[4].style.fontWeight='bold'
-
-let newItem=document.getElementsByClassName('list-group-newItem')
-newItem[0].style.height='50px'
-newItem[0].style.padding='15px'
-newItem[0].style.listStyle='none'
-
-
-let getItems=document.querySelector('.list-group')
-console.log(getItems)
-getItems.children[1].style.backgroundColor='green'
-getItems.children[2].style.display='none'
-
-let getAllItem=document.querySelectorAll('.list-group-item')
-getAllItem[1].style.color='black'
-
-let odd=document.querySelectorAll('.list-group-item:nth-child(odd)')
-console.log(odd)
-for(var items of odd){
-    items.style.backgroundColor='green'
-    items.style.color='black'
+ Btn.appendChild(document.createTextNode('X'))
+  li.appendChild(Btn)
+    ulList.appendChild(li)
 
 }
 
-//traversing the dom 
 
+//delete item
 
-let itemList=document.querySelector('#items')
-console.log(itemList.parentNode)
-itemList.parentElement.style.backgroundColor='#f4f4f4'
-console.log(itemList.parentElement.parentElement)
-
-itemList.children[3].style.backgroundColor='green'
-itemList.firstChild.innerText='First'
-itemList.firstElementChild.textContent='First Item Updated'
-itemList.lastElementChild.textContent='Last Item Updated'
-console.log(itemList.lastChild)
-itemList.nextElementSibling.innerHTML='Successful'
-itemList.nextElementSibling.style.padding='10px'
-
-console.log(itemList.previousSibling)
-itemList.previousElementSibling.style.color='black'
-
-//create element
-
-let newDiv= document.createElement('div')
-
-newDiv.className='container2'
-newDiv.id='container2'
-
-newDiv.setAttribute('title', 'newDiv')
-let newDivText=document.createTextNode('Hello World')
-
-newDiv.appendChild(newDivText)
-console.log(newDiv)
-
-let container= document.querySelector('header .container')
-let h1=document.querySelector('header h1')
-
-container.insertBefore(newDiv,h1)
-
-let newTag=document.createElement('li')
-newTag.className='list-group-item'
-
-let liText=document.createTextNode('Hello World')
-newTag.appendChild(liText)
-console.log(newTag)
-
-let ulTag=document.querySelector('#items')
-let li=document.querySelector('.list-group-item')
-
-ulTag.insertBefore(newTag,li)
+ulList.addEventListener('click',removeItem)
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure?')){
+            let li=e.target.parentElement
+            ulList.removeChild(li)
+        }
+    }
+}
